@@ -1,27 +1,20 @@
 """
-producer_case.py
+producer_meyer.py
 
-Stream JSON data to any combination of sinks:
-- File (JSONL)
-- Kafka topic
-- SQLite database
-- DuckDB database
+Manufacturing sensor data streaming producer.
+Generates realistic machine sensor data for temperature, vibration monitoring,
+and efficiency analysis.
 
-Each sink has its own one-line *emitter function* you can call inside the loop.
-Comment out the ones you don't want.
-
-Example JSON message
+Example JSON message:
 {
-    "message": "I just shared a meme! It was amazing.",
-    "author": "Charlie",
-    "timestamp": "2025-01-29 14:35:20",
-    "category": "humor",
-    "sentiment": 0.87,
-    "keyword_mentioned": "meme",
-    "message_length": 42
+    "message": "Machine 15 in Active mode. Temp: 44.28°C, Vib: 2.08Hz.",
+    "author": "Sensor-15",
+    "timestamp": "2024-01-01 00:02:00",
+    "category": "active",
+    "sentiment": 0.99,
+    "keyword_mentioned": "Low",
+    "message_length": 54
 }
-
-Environment variables are in utils/utils_config module.
 """
 
 #####################################
@@ -51,58 +44,95 @@ from utils.emitters import file_emitter, kafka_emitter, sqlite_emitter, duckdb_e
 
 
 #####################################
-# Stub Sentiment Analysis Function
+# Manufacturing Data Generator
 #####################################
 
-def assess_sentiment(text: str) -> float:
-    """Stub for sentiment analysis; returns a random score in [0,1]."""
-    return round(random.uniform(0, 1), 2)
-
-
-#####################################
-# Message Generator
-#####################################
-
-def generate_messages():
-    """Yield JSON-able dicts forever."""
-    ADJECTIVES = ["amazing", "funny", "boring", "exciting", "weird"]
-    ACTIONS = ["found", "saw", "tried", "shared", "loved"]
-    TOPICS = [
-        "a movie", "a meme", "an app", "a trick", "a story",
-        "Python", "JavaScript", "recipe", "travel", "game",
-    ]
-    AUTHORS = ["Alice", "Bob", "Charlie", "Eve"]
-    KEYWORD_CATEGORIES = {
-        "meme": "humor",
-        "Python": "tech",
-        "JavaScript": "tech",
-        "recipe": "food",
-        "travel": "travel",
-        "movie": "entertainment",
-        "game": "gaming",
+def generate_manufacturing_messages():
+    """Yield manufacturing sensor JSON messages forever."""
+    
+    # Manufacturing equipment configurations
+    MACHINE_IDS = range(1, 51)  # 50 machines
+    MODES = ["Active", "Idle", "Maintenance", "Offline"]
+    MODE_WEIGHTS = [0.6, 0.25, 0.1, 0.05]  # Active is most common
+    
+    # Temperature ranges by mode (Celsius)
+    TEMP_RANGES = {
+        "Active": (35, 95),      # Operating temperature
+        "Idle": (70, 90),        # Warm but not working
+        "Maintenance": (20, 30), # Room temperature
+        "Offline": (18, 25)      # Cool down
     }
-
+    
+    # Vibration ranges by mode (Hz)
+    VIB_RANGES = {
+        "Active": (0.1, 4.0),    # Normal operation vibration
+        "Idle": (0.0, 1.0),      # Minimal vibration
+        "Maintenance": (0.0, 0.5), # Very low
+        "Offline": (0.0, 0.1)    # Almost none
+    }
+    
+    # Efficiency categories based on temperature and vibration
+    EFFICIENCY_KEYWORDS = ["Low", "Medium", "High", "Critical"]
+    
+    message_count = 0
+    base_time = datetime(2024, 1, 1, 0, 0, 0)
+    
     while True:
-        adjective = random.choice(ADJECTIVES)
-        action = random.choice(ACTIONS)
-        topic = random.choice(TOPICS)
-        author = random.choice(AUTHORS)
-        message_text = f"I just {action} {topic}! It was {adjective}."
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-        keyword_mentioned = next((w for w in KEYWORD_CATEGORIES if w in topic), "other")
-        category = KEYWORD_CATEGORIES.get(keyword_mentioned, "other")
-        sentiment = assess_sentiment(message_text)
-
+        machine_id = random.choice(MACHINE_IDS)
+        mode = random.choices(MODES, weights=MODE_WEIGHTS)[0]
+        
+        # Generate realistic sensor readings based on mode
+        temp_min, temp_max = TEMP_RANGES[mode]
+        vib_min, vib_max = VIB_RANGES[mode]
+        
+        temperature = round(random.uniform(temp_min, temp_max), 2)
+        vibration = round(random.uniform(vib_min, vib_max), 2)
+        
+        # Calculate efficiency keyword based on readings
+        if mode == "Offline":
+            efficiency = "Critical"
+            sentiment = 0.1
+        elif mode == "Maintenance":
+            efficiency = "Low" 
+            sentiment = 0.3
+        elif mode == "Idle":
+            efficiency = random.choice(["Low", "Medium"])
+            sentiment = random.uniform(0.4, 0.7)
+        else:  # Active mode
+            # High temp or high vibration = lower efficiency
+            if temperature > 80 or vibration > 3.0:
+                efficiency = "Medium"
+                sentiment = random.uniform(0.5, 0.8)
+            elif temperature > 70 or vibration > 2.0:
+                efficiency = "Medium"
+                sentiment = random.uniform(0.6, 0.9)
+            else:
+                efficiency = "High"
+                sentiment = random.uniform(0.8, 1.0)
+        
+        # Create message text
+        message_text = f"Machine {machine_id} in {mode} mode. Temp: {temperature}°C, Vib: {vibration:.2f}Hz."
+        
+        # Calculate timestamp (increment by 1 minute each message)
+        timestamp = base_time.replace(minute=message_count % 60, 
+                                     hour=(message_count // 60) % 24)
+        timestamp_str = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+        
         yield {
             "message": message_text,
-            "author": author,
-            "timestamp": timestamp,
-            "category": category,
-            "sentiment": sentiment,
-            "keyword_mentioned": keyword_mentioned,
+            "author": f"Sensor-{machine_id}",
+            "timestamp": timestamp_str,
+            "category": mode.lower(),
+            "sentiment": round(sentiment, 2),
+            "keyword_mentioned": efficiency,
             "message_length": len(message_text),
+            "machine_id": machine_id,
+            "temperature": temperature,
+            "vibration": vibration,
+            "efficiency_level": efficiency
         }
+        
+        message_count += 1
 
 
 #####################################
@@ -136,7 +166,8 @@ def emit_to_duckdb(message: Mapping[str, Any], *, db_path: pathlib.Path) -> bool
 #####################################
 
 def main() -> None:
-    logger.info("Starting Producer to run continuously.")
+    logger.info("Starting Manufacturing Sensor Producer")
+    logger.info("Streaming machine sensor data with temperature and vibration readings")
     logger.info("Use Ctrl+C to stop.")
 
     # STEP 1. Read config
@@ -148,11 +179,11 @@ def main() -> None:
         # Optional DB paths (fallbacks if not provided)
         sqlite_path: pathlib.Path = (
             config.get_sqlite_path() if hasattr(config, "get_sqlite_path")
-            else pathlib.Path("data/buzz.sqlite")
+            else pathlib.Path("data/manufacturing.sqlite")
         )
         duckdb_path: pathlib.Path = (
             config.get_duckdb_path() if hasattr(config, "get_duckdb_path")
-            else pathlib.Path("data/buzz.duckdb")
+            else pathlib.Path("data/manufacturing.duckdb")
         )
     except Exception as e:
         logger.error(f"ERROR: Failed to read environment variables: {e}")
@@ -186,10 +217,12 @@ def main() -> None:
         logger.warning(f"WARNING: Kafka setup failed: {e}")
         producer = None
 
-    # STEP 4. Emit loop — CALL ANY/ALL EMITTERS YOU WANT
+    # STEP 4. Emit loop — Manufacturing sensor data
     try:
-        for message in generate_messages():
-            logger.info(message)
+        for message in generate_manufacturing_messages():
+            logger.info(f"Machine {message['machine_id']}: {message['category']} - "
+                       f"Temp: {message['temperature']}°C, Vib: {message['vibration']}Hz, "
+                       f"Efficiency: {message['efficiency_level']}")
 
             # --- File (JSONL) ---
             emit_to_file(message, path=live_data_path)
@@ -209,7 +242,7 @@ def main() -> None:
             time.sleep(interval_secs)
 
     except KeyboardInterrupt:
-        logger.warning("Producer interrupted by user.")
+        logger.warning("Manufacturing Producer interrupted by user.")
     except Exception as e:
         logger.error(f"ERROR: Unexpected error: {e}")
     finally:
@@ -220,7 +253,7 @@ def main() -> None:
                 logger.info("Kafka producer closed.")
             except Exception:
                 pass
-        logger.info("Producer shutting down.")
+        logger.info("Manufacturing Producer shutting down.")
 
 
 #####################################
