@@ -54,8 +54,6 @@ The consumer displays a comprehensive and real time dashboard:
    - Bar chart of average efficiency by operational state
    - Color-coded performance levels
 
-![Manufacturing Analytics Dashboard](images/dashboard_screenshot.png)
-
 ## Running the Pipeline
 
 ### Prerequisites
