@@ -113,3 +113,70 @@
 2025-09-22 21:27:14 | INFO | Machine 45: active - Temp: 43.8°C, Vib: 3.34Hz, Efficiency: Medium
 2025-09-22 21:27:17 | WARNING | Manufacturing Producer interrupted by user.
 2025-09-22 21:27:17 | INFO | Manufacturing Producer shutting down.
+2025-09-23 20:46:37 | INFO | Logging to file: logs/project_log.log
+2025-09-23 20:46:37 | INFO | Log sanitization enabled, personal info removed
+2025-09-23 20:46:38 | INFO | Starting Manufacturing Sensor Producer
+2025-09-23 20:46:38 | INFO | Streaming machine sensor data with temperature and vibration readings
+2025-09-23 20:46:38 | INFO | Use Ctrl+C to stop.
+2025-09-23 20:46:38 | INFO | MESSAGE_INTERVAL_SECONDS: 5
+2025-09-23 20:46:38 | INFO | BUZZ_TOPIC: buzzline
+2025-09-23 20:46:38 | INFO | KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-09-23 20:46:38 | INFO | BASE_DATA_DIR: PROJECT_ROOT/data
+2025-09-23 20:46:38 | INFO | LIVE_DATA_PATH: PROJECT_ROOT/data/project_live.json
+2025-09-23 20:46:38 | INFO | BASE_DATA_DIR: PROJECT_ROOT/data
+2025-09-23 20:46:38 | INFO | SQLITE_PATH: PROJECT_ROOT/data/buzz.sqlite
+2025-09-23 20:46:38 | INFO | Deleted existing live data file.
+2025-09-23 20:46:38 | INFO | Kafka broker address: localhost:9092
+2025-09-23 20:46:40 | ERROR | Error checking Kafka: NoBrokersAvailable
+2025-09-23 20:46:40 | WARNING | Kafka broker not available; continuing without Kafka.
+2025-09-23 20:46:40 | INFO | Kafka disabled for this run.
+2025-09-23 20:46:40 | INFO | Machine 3: active - Temp: 86.44°C, Vib: 0.18Hz, Efficiency: Medium
+2025-09-23 20:46:45 | INFO | Machine 37: active - Temp: 47.9°C, Vib: 0.56Hz, Efficiency: High
+2025-09-23 20:46:50 | INFO | Machine 50: idle - Temp: 87.76°C, Vib: 0.18Hz, Efficiency: Low
+2025-09-23 20:46:55 | INFO | Machine 17: active - Temp: 61.62°C, Vib: 2.45Hz, Efficiency: Medium
+2025-09-23 20:47:00 | INFO | Machine 15: active - Temp: 44.38°C, Vib: 0.41Hz, Efficiency: High
+2025-09-23 20:47:03 | INFO | Logging to file: logs/project_log.log
+2025-09-23 20:47:03 | INFO | Log sanitization enabled, personal info removed
+2025-09-23 20:47:05 | INFO | Machine 38: active - Temp: 75.16°C, Vib: 1.59Hz, Efficiency: Medium
+2025-09-23 20:47:10 | INFO | Machine 26: idle - Temp: 88.59°C, Vib: 0.34Hz, Efficiency: Low
+2025-09-23 20:47:15 | INFO | Machine 50: active - Temp: 70.84°C, Vib: 1.45Hz, Efficiency: Medium
+2025-09-23 20:47:20 | INFO | Machine 47: idle - Temp: 73.89°C, Vib: 0.23Hz, Efficiency: Low
+2025-09-23 20:47:25 | INFO | Machine 41: active - Temp: 68.49°C, Vib: 3.07Hz, Efficiency: Medium
+2025-09-23 20:47:30 | INFO | Machine 36: idle - Temp: 88.1°C, Vib: 0.83Hz, Efficiency: Low
+2025-09-23 20:47:35 | INFO | Machine 33: idle - Temp: 87.6°C, Vib: 0.94Hz, Efficiency: Low
+2025-09-23 20:47:40 | INFO | Machine 36: active - Temp: 57.74°C, Vib: 2.07Hz, Efficiency: Medium
+2025-09-23 20:47:45 | INFO | Machine 43: idle - Temp: 81.05°C, Vib: 0.51Hz, Efficiency: Medium
+2025-09-23 20:47:50 | INFO | Machine 30: active - Temp: 91.92°C, Vib: 0.27Hz, Efficiency: Medium
+2025-09-23 20:47:55 | INFO | Machine 33: idle - Temp: 74.55°C, Vib: 0.61Hz, Efficiency: Low
+2025-09-23 20:48:00 | INFO | Machine 21: active - Temp: 40.23°C, Vib: 0.44Hz, Efficiency: High
+2025-09-23 20:48:05 | INFO | Machine 26: active - Temp: 64.62°C, Vib: 0.78Hz, Efficiency: High
+2025-09-23 20:48:10 | INFO | Machine 6: idle - Temp: 85.73°C, Vib: 0.18Hz, Efficiency: Low
+2025-09-23 20:48:15 | INFO | Machine 15: active - Temp: 45.45°C, Vib: 3.61Hz, Efficiency: Medium
+2025-09-23 20:48:20 | INFO | Machine 29: active - Temp: 60.23°C, Vib: 0.72Hz, Efficiency: High
+2025-09-23 20:48:25 | INFO | Machine 27: active - Temp: 41.51°C, Vib: 3.11Hz, Efficiency: Medium
+2025-09-23 20:48:30 | INFO | Machine 18: idle - Temp: 86.65°C, Vib: 0.67Hz, Efficiency: Medium
+2025-09-23 20:48:35 | INFO | Machine 3: active - Temp: 36.85°C, Vib: 1.12Hz, Efficiency: High
+2025-09-23 20:48:40 | INFO | Machine 23: idle - Temp: 81.19°C, Vib: 0.04Hz, Efficiency: Medium
+2025-09-23 20:48:45 | INFO | Machine 6: idle - Temp: 87.48°C, Vib: 0.67Hz, Efficiency: Low
+2025-09-23 20:48:50 | INFO | Machine 19: active - Temp: 78.46°C, Vib: 1.38Hz, Efficiency: Medium
+2025-09-23 20:48:55 | INFO | Machine 50: active - Temp: 73.45°C, Vib: 0.91Hz, Efficiency: Medium
+2025-09-23 20:49:00 | INFO | Machine 34: active - Temp: 77.71°C, Vib: 2.04Hz, Efficiency: Medium
+2025-09-23 20:49:05 | INFO | Machine 26: active - Temp: 70.74°C, Vib: 2.3Hz, Efficiency: Medium
+2025-09-23 20:49:10 | INFO | Machine 42: active - Temp: 60.34°C, Vib: 1.78Hz, Efficiency: High
+2025-09-23 20:49:15 | INFO | Machine 26: active - Temp: 80.85°C, Vib: 1.82Hz, Efficiency: Medium
+2025-09-23 20:49:20 | INFO | Machine 8: active - Temp: 68.54°C, Vib: 1.92Hz, Efficiency: High
+2025-09-23 20:49:25 | INFO | Machine 22: idle - Temp: 81.47°C, Vib: 0.57Hz, Efficiency: Low
+2025-09-23 20:49:30 | INFO | Machine 30: active - Temp: 83.25°C, Vib: 0.13Hz, Efficiency: Medium
+2025-09-23 20:49:35 | INFO | Machine 26: active - Temp: 55.92°C, Vib: 0.27Hz, Efficiency: High
+2025-09-23 20:49:40 | INFO | Machine 18: active - Temp: 42.81°C, Vib: 3.39Hz, Efficiency: Medium
+2025-09-23 20:49:45 | INFO | Machine 44: active - Temp: 76.21°C, Vib: 3.85Hz, Efficiency: Medium
+2025-09-23 20:49:50 | INFO | Machine 49: active - Temp: 71.09°C, Vib: 1.59Hz, Efficiency: Medium
+2025-09-23 20:49:55 | INFO | Machine 42: active - Temp: 38.94°C, Vib: 2.83Hz, Efficiency: Medium
+2025-09-23 20:50:00 | INFO | Machine 35: active - Temp: 69.06°C, Vib: 0.82Hz, Efficiency: High
+2025-09-23 20:50:05 | INFO | Machine 41: active - Temp: 41.32°C, Vib: 1.41Hz, Efficiency: High
+2025-09-23 20:50:10 | INFO | Machine 9: active - Temp: 54.66°C, Vib: 0.37Hz, Efficiency: High
+2025-09-23 20:50:15 | INFO | Machine 43: idle - Temp: 79.41°C, Vib: 0.67Hz, Efficiency: Low
+2025-09-23 20:50:20 | INFO | Machine 46: offline - Temp: 22.7°C, Vib: 0.06Hz, Efficiency: Critical
+2025-09-23 20:50:25 | INFO | Machine 3: idle - Temp: 79.94°C, Vib: 0.79Hz, Efficiency: Low
+2025-09-23 20:50:25 | WARNING | Manufacturing Producer interrupted by user.
+2025-09-23 20:50:25 | INFO | Manufacturing Producer shutting down.
