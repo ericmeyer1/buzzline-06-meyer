@@ -65,3 +65,51 @@
 2025-09-22 21:12:53 | INFO | {'message': 'I just shared a movie! It was weird.', 'author': 'Eve', 'timestamp': '2025-09-22 21:12:53', 'category': 'entertainment', 'sentiment': 0.14, 'keyword_mentioned': 'movie', 'message_length': 36}
 2025-09-22 21:12:57 | WARNING | Producer interrupted by user.
 2025-09-22 21:12:57 | INFO | Producer shutting down.
+2025-09-22 21:25:02 | INFO | Logging to file: logs/project_log.log
+2025-09-22 21:25:02 | INFO | Log sanitization enabled, personal info removed
+2025-09-22 21:25:02 | INFO | Starting Manufacturing Sensor Producer
+2025-09-22 21:25:02 | INFO | Streaming machine sensor data with temperature and vibration readings
+2025-09-22 21:25:02 | INFO | Use Ctrl+C to stop.
+2025-09-22 21:25:02 | INFO | MESSAGE_INTERVAL_SECONDS: 5
+2025-09-22 21:25:02 | INFO | BUZZ_TOPIC: buzzline
+2025-09-22 21:25:02 | INFO | KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-09-22 21:25:02 | INFO | BASE_DATA_DIR: PROJECT_ROOT/data
+2025-09-22 21:25:02 | INFO | LIVE_DATA_PATH: PROJECT_ROOT/data/project_live.json
+2025-09-22 21:25:02 | INFO | BASE_DATA_DIR: PROJECT_ROOT/data
+2025-09-22 21:25:02 | INFO | SQLITE_PATH: PROJECT_ROOT/data/buzz.sqlite
+2025-09-22 21:25:02 | INFO | Deleted existing live data file.
+2025-09-22 21:25:02 | INFO | Kafka broker address: localhost:9092
+2025-09-22 21:25:04 | ERROR | Error checking Kafka: NoBrokersAvailable
+2025-09-22 21:25:04 | WARNING | Kafka broker not available; continuing without Kafka.
+2025-09-22 21:25:04 | INFO | Kafka disabled for this run.
+2025-09-22 21:25:04 | INFO | Machine 37: active - Temp: 94.02°C, Vib: 2.06Hz, Efficiency: Medium
+2025-09-22 21:25:09 | INFO | Machine 39: active - Temp: 37.56°C, Vib: 0.83Hz, Efficiency: High
+2025-09-22 21:25:14 | INFO | Machine 50: active - Temp: 50.58°C, Vib: 2.28Hz, Efficiency: Medium
+2025-09-22 21:25:19 | INFO | Machine 36: active - Temp: 81.64°C, Vib: 0.72Hz, Efficiency: Medium
+2025-09-22 21:25:24 | INFO | Machine 30: active - Temp: 92.33°C, Vib: 0.92Hz, Efficiency: Medium
+2025-09-22 21:25:28 | INFO | Logging to file: logs/project_log.log
+2025-09-22 21:25:28 | INFO | Log sanitization enabled, personal info removed
+2025-09-22 21:25:29 | INFO | Machine 31: active - Temp: 67.15°C, Vib: 2.95Hz, Efficiency: Medium
+2025-09-22 21:25:34 | INFO | Machine 25: active - Temp: 69.09°C, Vib: 1.78Hz, Efficiency: High
+2025-09-22 21:25:39 | INFO | Machine 32: maintenance - Temp: 26.24°C, Vib: 0.41Hz, Efficiency: Low
+2025-09-22 21:25:44 | INFO | Machine 37: maintenance - Temp: 26.29°C, Vib: 0.03Hz, Efficiency: Low
+2025-09-22 21:25:49 | INFO | Machine 18: maintenance - Temp: 24.29°C, Vib: 0.21Hz, Efficiency: Low
+2025-09-22 21:25:54 | INFO | Machine 4: active - Temp: 67.78°C, Vib: 1.7Hz, Efficiency: High
+2025-09-22 21:25:59 | INFO | Machine 24: maintenance - Temp: 20.1°C, Vib: 0.25Hz, Efficiency: Low
+2025-09-22 21:26:04 | INFO | Machine 26: active - Temp: 54.78°C, Vib: 3.43Hz, Efficiency: Medium
+2025-09-22 21:26:09 | INFO | Machine 33: offline - Temp: 24.21°C, Vib: 0.09Hz, Efficiency: Critical
+2025-09-22 21:26:14 | INFO | Machine 38: active - Temp: 57.85°C, Vib: 2.49Hz, Efficiency: Medium
+2025-09-22 21:26:19 | INFO | Machine 8: idle - Temp: 72.39°C, Vib: 0.21Hz, Efficiency: Low
+2025-09-22 21:26:24 | INFO | Machine 7: active - Temp: 59.65°C, Vib: 3.51Hz, Efficiency: Medium
+2025-09-22 21:26:29 | INFO | Machine 6: idle - Temp: 78.07°C, Vib: 0.09Hz, Efficiency: Medium
+2025-09-22 21:26:34 | INFO | Machine 48: idle - Temp: 72.8°C, Vib: 0.98Hz, Efficiency: Medium
+2025-09-22 21:26:39 | INFO | Machine 28: active - Temp: 47.96°C, Vib: 1.2Hz, Efficiency: High
+2025-09-22 21:26:44 | INFO | Machine 23: idle - Temp: 70.75°C, Vib: 0.18Hz, Efficiency: Low
+2025-09-22 21:26:49 | INFO | Machine 19: idle - Temp: 88.68°C, Vib: 0.22Hz, Efficiency: Low
+2025-09-22 21:26:54 | INFO | Machine 12: idle - Temp: 79.47°C, Vib: 0.58Hz, Efficiency: Low
+2025-09-22 21:26:59 | INFO | Machine 42: active - Temp: 61.3°C, Vib: 3.44Hz, Efficiency: Medium
+2025-09-22 21:27:04 | INFO | Machine 22: active - Temp: 66.89°C, Vib: 1.4Hz, Efficiency: High
+2025-09-22 21:27:09 | INFO | Machine 30: idle - Temp: 80.67°C, Vib: 0.66Hz, Efficiency: Medium
+2025-09-22 21:27:14 | INFO | Machine 45: active - Temp: 43.8°C, Vib: 3.34Hz, Efficiency: Medium
+2025-09-22 21:27:17 | WARNING | Manufacturing Producer interrupted by user.
+2025-09-22 21:27:17 | INFO | Manufacturing Producer shutting down.
